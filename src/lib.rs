@@ -464,7 +464,7 @@ impl Url {
     ///
     /// In particular, relative URL references are parse errors since no base URL is provided.
     #[inline]
-    pub fn parse(input: &str) -> ParseResult<Url> {
+    pub fn parse<'r> (input: &'r str) -> ParseResult<Url> {
         UrlParser::new().parse(input)
     }
 
