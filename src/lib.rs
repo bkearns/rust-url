@@ -345,7 +345,7 @@ impl<'a> UrlParser<'a> {
 
     /// Parse `input` as an URL, with all the parameters previously set in the `UrlParser`.
     #[inline]
-    pub fn parse(&self, input: &str) -> ParseResult<Url> {
+    pub fn parse <'r> (&'r self, input: &str) -> ParseResult<Url> {
         parser::parse_url(input, self)
     }
 
@@ -715,7 +715,7 @@ impl Url {
     /// The returned string starts with a "/" slash, and components are separated by slashes.
     /// A trailing slash represents an empty last component.
     #[inline]
-    pub fn serialize_path(&self) -> Option<String> {
+    pub fn serialize_path( self) -> Option<String> {
         self.relative_scheme_data().map(|scheme_data| scheme_data.serialize_path())
     }
 
